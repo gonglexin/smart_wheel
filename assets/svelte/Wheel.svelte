@@ -31,7 +31,7 @@
   export let pointerTextColor = "white";
   export let items = ["yes", "no", "maybe"];
   export let colors = Array.from({ length: items.length }, generateColors);
-  export let size = 800;
+  export let size = 600;
   export let pointerSize = size / 8;
   /**
    * @template string
@@ -142,20 +142,46 @@
         >Spin!</button
       >
     </div>
-    <div id="actions" class="flex gap-x-2">
-      <form phx-submit="add_item">
-        <input type="text" name="item" placeholder="Add item" />
+    <div id="actions" class="flex flex-col space-y-2">
+      <div class="flex gap-x-2">
+        <form phx-submit="add_item">
+          <input
+            type="text"
+            name="item"
+            placeholder="Add item"
+            class="rounded-full border border-black focus:border-black focus:ring-0 text-sm"
+          />
+          <button
+            type="submit"
+            class="p-2 rounded-full bg-zinc-900 text-white text-sm hover:bg-zinc-950"
+          >
+            Add
+          </button>
+        </form>
         <button
-          type="submit"
-          class="phx-submit-loading: opacity-75 p-2 rounded-full border border-black hover:bg-black hover:text-white"
-          >Add</button
+          phx-click="clear_items"
+          class="p-2 rounded-full border bg-zinc-900 text-white text-sm hover:bg-zinc-950"
         >
-      </form>
-      <button
-        phx-click="clear_items"
-        class="p-2 rounded-full border border-black hover:bg-black hover:text-white"
-        >Clear Items</button
-      >
+          Clear Items
+        </button>
+      </div>
+      <hr />
+      <div>
+        <form phx-submit="populate_ai_items">
+          <input
+            type="text"
+            name="prompt"
+            placeholder="Generate items by AI"
+            class="rounded-full border border-black focus:border-black focus:ring-0 text-sm"
+          />
+          <button
+            type="submit"
+            class="p-2 rounded-full bg-zinc-900 text-white text-sm hover:bg-zinc-950"
+          >
+            Generate
+          </button>
+        </form>
+      </div>
     </div>
   </div>
 </div>
