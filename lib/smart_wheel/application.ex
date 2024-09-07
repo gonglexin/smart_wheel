@@ -8,6 +8,7 @@ defmodule SmartWheel.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      {NodeJS.Supervisor, [path: LiveSvelte.SSR.NodeJS.server_path(), pool_size: 4]},
       SmartWheelWeb.Telemetry,
       SmartWheel.Repo,
       {DNSCluster, query: Application.get_env(:smart_wheel, :dns_cluster_query) || :ignore},

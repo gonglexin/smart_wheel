@@ -87,6 +87,8 @@ defmodule SmartWheelWeb do
       import SmartWheelWeb.CoreComponents
       import SmartWheelWeb.Gettext
 
+      import LiveSvelte
+
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
 

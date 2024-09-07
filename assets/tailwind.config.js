@@ -9,7 +9,8 @@ module.exports = {
   content: [
     "./js/**/*.js",
     "../lib/smart_wheel_web.ex",
-    "../lib/smart_wheel_web/**/*.*ex"
+    "../lib/smart_wheel_web/**/*.*ex",
+    "./svelte/**/*.svelte"
   ],
   theme: {
     extend: {

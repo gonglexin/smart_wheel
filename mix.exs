@@ -42,7 +42,6 @@ defmodule SmartWheel.MixProject do
       {:phoenix_live_view, "~> 1.0.0-rc.1", override: true},
       {:floki, ">= 0.30.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.8.3"},
-      {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.2", runtime: Mix.env() == :dev},
       {:heroicons,
        github: "tailwindlabs/heroicons",
@@ -58,7 +57,8 @@ defmodule SmartWheel.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+      {:live_svelte, "~> 0.13.3"}
     ]
   end
 
@@ -74,11 +74,12 @@ defmodule SmartWheel.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
+      "assets.setup": ["tailwind.install --if-missing", "npm install --prefix assets"],
       "assets.build": ["tailwind smart_wheel", "esbuild smart_wheel"],
       "assets.deploy": [
         "tailwind smart_wheel --minify",
         "esbuild smart_wheel --minify",
+        "node build.js --deploy --prefix assets",
         "phx.digest"
       ]
     ]
