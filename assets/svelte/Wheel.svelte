@@ -31,7 +31,7 @@
   export let pointerTextColor = "white";
   export let items = ["yes", "no", "maybe"];
   export let colors = Array.from({ length: items.length }, generateColors);
-  export let size = 400;
+  export let size = 800;
   export let pointerSize = size / 8;
   /**
    * @template string
@@ -133,12 +133,31 @@
   // onMount(svgRender);
 </script>
 
-<div class="wheel-container" id="wheel-container">
-  <div style="rotate: {spinDeg}turn" class="wheel" />
-  <Pointer {pointerColor} {pointerSize} />
-  <button class="spin-button" on:click={spinWheel} color={pointerTextColor}
-    >Spin!</button
-  >
+<div class="flex flex-col">
+  <div class="wheel-container flex-col" id="wheel-container">
+    <div>
+      <div style="rotate: {spinDeg}turn" class="wheel" />
+      <Pointer {pointerColor} {pointerSize} />
+      <button class="spin-button" on:click={spinWheel} color={pointerTextColor}
+        >Spin!</button
+      >
+    </div>
+    <div id="actions" class="flex gap-x-2">
+      <form phx-submit="add_item">
+        <input type="text" name="item" placeholder="Add item" />
+        <button
+          type="submit"
+          class="phx-submit-loading: opacity-75 p-2 rounded-full border border-black hover:bg-black hover:text-white"
+          >Add</button
+        >
+      </form>
+      <button
+        phx-click="clear_items"
+        class="p-2 rounded-full border border-black hover:bg-black hover:text-white"
+        >Clear Items</button
+      >
+    </div>
+  </div>
 </div>
 
 <style>
