@@ -7,6 +7,7 @@
     "svelte-preprocess": "^6.0.2"
   },
   "dependencies": {
+    "d3": "^7.9.0",
     "live_svelte": "file:../deps/live_svelte",
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html",

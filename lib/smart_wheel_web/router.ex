@@ -17,7 +17,7 @@ defmodule SmartWheelWeb.Router do
   scope "/", SmartWheelWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", WheelLive
   end
 
   # Other scopes may use custom stacks.
