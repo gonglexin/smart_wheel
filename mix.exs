@@ -79,8 +79,7 @@ defmodule SmartWheel.MixProject do
       "assets.build": ["tailwind smart_wheel", "esbuild smart_wheel"],
       "assets.deploy": [
         "tailwind smart_wheel --minify",
-        "esbuild smart_wheel --minify",
-        "node build.js --deploy --prefix assets",
+        "cmd --cd assets node build.js --deploy",
         "phx.digest"
       ]
     ]
